@@ -1,0 +1,36 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Utilisateurs > Détails d'un utilisateur";
+}
+
+<h1>Utilisateurs</h1>
+
+<div>
+    <h4>Détails de l'utilisateur</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Prénom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Région
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Region.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Modifier</a> |
+    <a asp-action="Index">Revenir à la liste</a>
+</div>

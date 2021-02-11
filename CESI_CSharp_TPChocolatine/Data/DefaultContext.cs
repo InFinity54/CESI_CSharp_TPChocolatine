@@ -11,5 +11,7 @@ namespace CESI_CSharp_TPChocolatine.Data
         }
 
         public DbSet<Region> Region { get; set; }
+
+        public DbSet<User> User { get; set; }
     }
 }

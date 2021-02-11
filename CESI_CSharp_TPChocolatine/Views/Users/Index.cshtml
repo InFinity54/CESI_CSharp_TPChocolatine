@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CESI_CSharp_TPChocolatine.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "Utilisateurs > Liste des utilisateurs";
+}
+
+<h1>Utilisateurs</h1>
+
+<p>
+    <a asp-action="Create">Ajouter un nouvel utilisateur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+               Prénom
+            </th>
+            <th>
+               Région
+            </th>
+            <th>
+               Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
