@@ -1,0 +1,56 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.VoteEditModel
+
+@{
+    ViewData["Title"] = "Votes > Voter pour une expression";
+
+    var usersList = Model.AllUsers.Select(x => new SelectListItem
+    {
+        Text = x.Value.ToString(),
+        Value = x.Key.ToString()
+    });
+
+    var expressionsList = Model.AllExpressions.Select(x => new SelectListItem
+    {
+        Text = x.Value.ToString(),
+        Value = x.Key.ToString()
+    });
+}
+
+<h1>Votes</h1>
+
+<h4>Voter pour une expression</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Votre nom et prénom</label>
+                <select class="form-control" asp-for="UserId" required
+                        asp-items="usersList">
+                    <option value="">(Sélectionnez un utilisateur...)</option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpressionId" class="control-label">L'expression pour laquelle vous souhaitez voter</label>
+                <select class="form-control" asp-for="ExpressionId" required
+                        asp-items="expressionsList">
+                    <option value="">(Sélectionnez une expression...)</option>
+                </select>
+                <span asp-validation-for="ExpressionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer le vote" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Revenir à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

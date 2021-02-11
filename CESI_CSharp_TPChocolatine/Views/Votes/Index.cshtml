@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CESI_CSharp_TPChocolatine.Models.VoteViewModel>
+
+@{
+    ViewData["Title"] = "Votes > Liste des votes";
+}
+
+<h1>Votes</h1>
+
+<p>
+    <a asp-action="Create">Voter pour une expression</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Expression nationale
+            </th>
+            <th>
+                Expression régionale
+            </th>
+            <th>
+                Région d'application
+            </th>
+            <th>
+                Utilisateur ayant voté
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expression.Original)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expression.Regional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expression.Region.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
