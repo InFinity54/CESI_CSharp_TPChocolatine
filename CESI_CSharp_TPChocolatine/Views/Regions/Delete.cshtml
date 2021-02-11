@@ -1,0 +1,27 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.Region
+
+@{
+    ViewData["Title"] = "Régions > Supprimer une région";
+}
+
+<h1>Régions</h1>
+
+<h3>Êtes-vous sûr(e) de vouloir supprimer cette région ?</h3>
+<div>
+    <h4>Région</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nom de la région
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer cette région" class="btn btn-danger" /> |
+        <a asp-action="Index">Revenir à la liste</a>
+    </form>
+</div>

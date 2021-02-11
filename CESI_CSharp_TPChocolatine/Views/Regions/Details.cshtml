@@ -1,0 +1,24 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.Region
+
+@{
+    ViewData["Title"] = "Régions > Détails d'une région";
+}
+
+<h1>Régions</h1>
+
+<div>
+    <h4>Détails de la région</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nom de la région
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Modifier cette région</a> |
+    <a asp-action="Index">Revenir à la liste</a>
+</div>
