@@ -1,0 +1,67 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.ExpressionEditModel
+
+@{
+    ViewData["Title"] = "Expressions > Ajouter une nouvelle expression";
+
+    var usersList = Model.AllUsers.Select(x => new SelectListItem
+    {
+        Text = x.Value.ToString(),
+        Value = x.Key.ToString()
+    });
+
+    var regionsList = Model.AllRegions.Select(x => new SelectListItem
+    {
+        Text = x.Value.ToString(),
+        Value = x.Key.ToString()
+    });
+}
+
+<h1>Expressions</h1>
+
+<h4>Ajouter une nouvelle expression</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Original" class="control-label">Expression nationale</label>
+                <input asp-for="Original" class="form-control" />
+                <span asp-validation-for="Original" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Regional" class="control-label">Expression régionale</label>
+                <input asp-for="Regional" class="form-control" />
+                <span asp-validation-for="Regional" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegionId" class="control-label">Région d'application</label>
+                <select class="form-control" asp-for="RegionId" required
+                        asp-items="regionsList">
+                    <option value="">(Sélectionnez une région...)</option>
+                </select>
+                <span asp-validation-for="RegionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Votre nom et prénom</label>
+                <p class="small">Si vous ne vous trouvez pas dans la liste, <a asp-area="" asp-controller="Users" asp-action="Create">cliquez ici pour vous inscrire</a>.</p>
+                <select class="form-control" asp-for="UserId" required
+                        asp-items="usersList">
+                    <option value="">(Sélectionnez un utilisateur...)</option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ajouter l'expression" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

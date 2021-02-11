@@ -66,7 +66,7 @@ namespace CESI_CSharp_TPChocolatine.Controllers
         {
             var vm = new UserEditModel
             {
-                AllRegions = _context.Region.ToDictionary(x => x.Id, x => $"{ x.Name }")
+                AllRegions = _context.Region.OrderBy(m => m.Name).ToDictionary(x => x.Id, x => $"{ x.Name }")
             };
             return View(vm);
         }

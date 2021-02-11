@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CESI_CSharp_TPChocolatine.Models.ExpressionViewModel>
+
+@{
+    ViewData["Title"] = "Expressions > Liste des expressions";
+}
+
+<h1>Expressions</h1>
+
+<p>
+    <a asp-action="Create">Ajouter une nouvelle expression</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Expression nationale
+            </th>
+            <th>
+                Expression régionale
+            </th>
+            <th>
+                Région d'application
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Original)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Regional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.Name)
+            </td>
+            <td>
+
+                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

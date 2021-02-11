@@ -13,5 +13,7 @@ namespace CESI_CSharp_TPChocolatine.Data
         public DbSet<Region> Region { get; set; }
 
         public DbSet<User> User { get; set; }
+
+        public DbSet<CESI_CSharp_TPChocolatine.Models.Expression> Expression { get; set; }
     }
 }

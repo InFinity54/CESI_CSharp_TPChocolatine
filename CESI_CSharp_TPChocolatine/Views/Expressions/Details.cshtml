@@ -1,0 +1,41 @@
+﻿@model CESI_CSharp_TPChocolatine.Models.ExpressionViewModel
+
+@{
+    ViewData["Title"] = "Expressions > Détail d'une expression";
+}
+
+<h1>Expressions</h1>
+
+<div>
+    <h4>Détail d'une expression</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Expression originale
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Original)
+        </dd>
+        <dt class="col-sm-2">
+            Expression régionale
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Regional)
+        </dd>
+        <dt class="col-sm-2">
+            Région d'application
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Region.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Ajoutée par
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.FirstName) @Html.DisplayFor(model => model.User.LastName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
